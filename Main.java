@@ -2,18 +2,25 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args){
         var scanner = new Scanner(System.in);
-        System.out.println("Informe sua idade: ");
-        int idade = scanner.nextInt();
-        System.out.println("Informe seu nome: ");
-        var nome = scanner.next();
-        System.out.println("Você é emancipado (s/n):");
-        var ehEmancipado = scanner.next().equalsIgnoreCase("S");
-        
-        var podeDirigir = (idade >= 18)||(idade >=16&& ehEmancipado);
-        var mensagem = podeDirigir ?
-            nome + ", você pode dirigir.":
-            nome + ", você não pode dirigir.";
-            System.out.println(mensagem);
+        System.out.println("Insira seu salário bruto: ");
+        double salario = scanner.nextDouble();
+        System.out.println("Insira seu bebefício: ");
+        double ben = scanner.nextDouble();
+        double imposto=0;
+        if(salario>2500.0){
+            imposto=salario*0.15;
+        }
+        else if(salario>1100.0){
+            imposto=salario*0.1;
+        }
+        else if(salario<1100.0){
+            imposto=salario*0.05;
+        }
+        else{
+           System.out.printf("Salário de %.2f não é permitido.", salario);
+        }
+            salario=(salario-imposto)+ben;
+            System.out.printf("\nSalário: %.2f", salario);
             scanner.close();
     }
 }
