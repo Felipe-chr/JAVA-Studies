@@ -1,26 +1,45 @@
-import java.util.Scanner;
 public class Main {
-    public static void main(String[] args){
-        var scanner = new Scanner(System.in);
-        System.out.println("Insira seu salário bruto: ");
-        double salario = scanner.nextDouble();
-        System.out.println("Insira seu bebefício: ");
-        double ben = scanner.nextDouble();
-        double imposto=0;
-        if(salario>2500.0){
-            imposto=salario*0.15;
+    public static void main(String[] args) {
+
+
+
+        
+    }
+
+    public static void printEmployee(Employee employee){
+
+
+        switch (employee) {
+            case Manager manager ->{
+                manager.setCode("123");
+                manager.setSalary(5000);
+                manager.setName("João");
+                manager.setLogin("João");
+                manager.setPassword("123456");   
+                manager.setCommission(1200);
+                    
+                System.out.printf("%s\n",manager.getCode());
+                System.out.printf("%s\n",manager.getSalary());
+                System.out.printf("%s\n",manager.getName());
+                System.out.printf("%s\n",manager.getLogin());
+                System.out.printf("%s\n",manager.getPassword());
+                System.out.printf("%s\n",manager.getCommission());
+            }
+            case Salesman salesman ->{
+                salesman.setCode("321");
+                salesman.setSalary(2800);
+                salesman.setName("Lucas");
+                salesman.setPercentPerSold(10);
+ 
+                    
+                System.out.printf("%s\n",salesman.getCode());
+                System.out.printf("%s\n",salesman.getSalary());
+                System.out.printf("%s\n",salesman.getName());
+                System.out.printf("%s\n",salesman.getPercentPerSold());
+            }
+            case null, default -> System.out.println("Funcionário inválido ou nulo.");
         }
-        else if(salario>1100.0){
-            imposto=salario*0.1;
-        }
-        else if(salario<1100.0){
-            imposto=salario*0.05;
-        }
-        else{
-           System.out.printf("Salário de %.2f não é permitido.", salario);
-        }
-            salario=(salario-imposto)+ben;
-            System.out.printf("\nSalário: %.2f", salario);
-            scanner.close();
+        System.out.println("==============");
+        System.out.printf("Salário Total: R$%.2f%n",employee.getFullSalary());
     }
 }
